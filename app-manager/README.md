@@ -17,19 +17,32 @@ L'app tourne sur `http://localhost:5174` (ou le port suivant si 5173 est déjà 
 
 Autres scripts : `npm run build` (build de prod), `npm run preview` (prévisualiser le build).
 
+## Où travailler — organisation par rôle
+
+Le code est organisé par rôle dans `src/features/<role>/`, pas par type de fichier — chaque rôle a son dossier, plus facile à répartir entre les 2 devs de l'équipe sans se marcher dessus :
+
+- `features/cuisine/` — Commandes.jsx, Preparation.jsx
+- `features/gerant/` — Menu.jsx
+- `features/manager/` — Statistiques.jsx, Personnel.jsx
+- `features/livreur/` — Livraisons.jsx
+
+`pages/Connexion.jsx` reste à part (dans `pages/`, pas dans `features/`) : c'est le seul écran commun aux 4 rôles, avant qu'un rôle ne soit connu.
+
+`pages/Dashboard.jsx` a été retiré (mort, non routé) : il datait de l'ancienne idée d'un dashboard unique sans rôles, explicitement écartée au profit des 4 espaces séparés (voir décisions actées du projet).
+
 ## Où en est-on
 
 Déjà fait (mergé dans `develop`, PR #1) :
 - `pages/Connexion.jsx` — connexion par rôle avec redirection automatique (Cuisine → `/commandes`, Gérant → `/menu`, Manager → `/statistiques`, Livreur → `/livraisons`).
 - `components/ProtectedRoute.jsx`, `auth/AuthContext.jsx`, `auth/roles.js` — routes protégées par rôle, déconnexion auto sur 401.
-- `pages/Commandes.jsx` — écran Cuisine : commandes payées/en préparation triées par ordre d'arrivée, progression Reçue → En préparation → Prête.
+- `features/cuisine/Commandes.jsx` — écran Cuisine : commandes payées/en préparation triées par ordre d'arrivée, progression Reçue → En préparation → Prête.
 - `auth/transitions.js` — table des transitions de statut autorisées par rôle.
 
-Reste à faire (placeholders déjà en place dans `pages/`, à compléter) :
-- `pages/Menu.jsx` — espace Gérant (CRUD menu, prix, disponibilité).
-- `pages/Statistiques.jsx` — espace Manager (entrées/sorties argent et produit).
-- `pages/Livraisons.jsx` — espace Livreur. **Point ouvert non tranché** : transition Prête → En livraison (attribution manuelle vs auto) et Prête → Retirée — à définir avec l'équipe avant de coder cette partie.
-- `pages/Preparation.jsx`, `pages/Personnel.jsx`, `pages/Dashboard.jsx` — hors périmètre MVP actuel, laissés en placeholder pour la V2.
+Reste à faire (placeholders déjà en place, à compléter) :
+- `features/gerant/Menu.jsx` — espace Gérant (CRUD menu, prix, disponibilité).
+- `features/manager/Statistiques.jsx` — espace Manager (entrées/sorties argent et produit).
+- `features/livreur/Livraisons.jsx` — espace Livreur. **Point ouvert non tranché** : transition Prête → En livraison (attribution manuelle vs auto) et Prête → Retirée — à définir avec l'équipe avant de coder cette partie.
+- `features/cuisine/Preparation.jsx`, `features/manager/Personnel.jsx` — hors périmètre MVP actuel, laissés en placeholder pour la V2.
 
 ## Rappels
 

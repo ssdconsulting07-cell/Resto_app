@@ -68,13 +68,18 @@ npm install
 npm run dev
 ```
 
-## Organisation du backend
+## Organisation du backend — par fonctionnalite
 
-- `controller/` — endpoints REST exposes aux deux frontends
-- `service/` — logique metier
-- `repository/` — acces aux donnees (Spring Data JPA)
-- `model/` — entites JPA (Produit, Commande, Utilisateur, Livreur, ...)
-- `dto/` — objets de transfert entre l'API et les frontends
+Chaque paquet "fonctionnalite" regroupe son propre controleur, service,
+repository, entite et DTO (pas de decoupage par couche technique global) :
+
+- `auth/` — connexion (`POST /auth/login`), emission du JWT
+- `produits/` — menu (consultation publique + gestion par le Gerant)
+- `commandes/` — creation en mode invite, suivi, changement de statut par le staff
+- `paiements/` — initialisation du paiement et webhook prestataire
+
+Paquets transverses (infrastructure partagee, pas une fonctionnalite en soi) :
+
 - `config/` — configuration Spring (securite, CORS pour les 2 frontends, etc.)
 - `security/` — authentification JWT du staff SenYummies Manager (l'App Client reste toujours anonyme)
 - `web/` — format d'erreur API standard (`ApiError`) et son gestionnaire global

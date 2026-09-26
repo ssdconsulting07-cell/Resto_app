@@ -25,16 +25,20 @@ mvn spring-boot:run
 
 Il faut alors une base MySQL déjà accessible en local — configurer `src/main/resources/application.properties` (ou pointer sur celle lancée par `docker compose up mysql` depuis la racine).
 
-## Où travailler
+## Où travailler — organisation par fonctionnalité
 
-- `controller/` — endpoints REST exposés aux deux frontends (vide, à remplir)
-- `service/` — logique métier (vide, à remplir)
-- `repository/` — accès aux données, Spring Data JPA (vide, à remplir)
-- `model/` — entités JPA : Produit, Commande, Utilisateur, Livreur... (vide, à remplir)
-- `dto/` — objets de transfert entre l'API et les frontends (vide, à remplir)
-- `config/`, `security/`, `web/` — déjà posés (sécurité JWT, CORS, format d'erreur standard `ApiError`) : à consommer, pas à refaire
-- `payment/` — interface `PaymentProvider` déjà posée, en attendant le choix PayDunya vs API directe (décision PDG en cours)
-- `contrat-api/openapi.yaml` — **le contrat d'API, source de vérité** entre les 3 équipes. Toute modification passe par une revue du lead Backend avant merge (voir conventions dans le README racine).
+Le code est organisé par fonctionnalité, pas par couche technique : chaque paquet ci-dessous regroupe son propre contrôleur, service, repository, entité et DTO.
+
+- `auth/` — connexion (`POST /auth/login`), émission du JWT (vide, à remplir)
+- `produits/` — menu : consultation publique + gestion par le Gérant (vide, à remplir)
+- `commandes/` — création en mode invité, suivi, changement de statut par le staff (vide, à remplir)
+- `paiements/` — initialisation du paiement et webhook prestataire (vide, à remplir)
+
+Paquets transverses déjà posés (infrastructure partagée entre toutes les fonctionnalités, à consommer, pas à refaire) :
+
+- `config/`, `security/`, `web/` — sécurité JWT, CORS, format d'erreur standard `ApiError`
+- `payment/` — interface `PaymentProvider`, en attendant le choix PayDunya vs API directe (décision PDG en cours)
+- `contrat-api/openapi.yaml` — **le contrat d'API, source de vérité** entre les 3 équipes, organisé par les mêmes 4 domaines (auth, produits, commandes, paiements). Toute modification passe par une revue du lead Backend avant merge (voir conventions dans le README racine).
 
 ## Rappels
 

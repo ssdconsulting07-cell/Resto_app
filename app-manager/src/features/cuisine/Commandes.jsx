@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { apiGet, apiPatch } from '../api/client.js'
-import { useAuth } from '../auth/AuthContext.jsx'
-import { allowedTransitions, STATUT_LABELS } from '../auth/transitions.js'
-import Layout from '../components/Layout.jsx'
-import { colors, fontFamily } from '../theme.js'
+import { apiGet, apiPatch } from '../../api/client.js'
+import { useAuth } from '../../auth/AuthContext.jsx'
+import { allowedTransitions, STATUT_LABELS } from '../../auth/transitions.js'
+import Layout from '../../components/Layout.jsx'
+import { colors, fontFamily } from '../../theme.js'
 
 // Ecran Cuisine : commandes payees (recues) et en preparation, dans l'ordre d'arrivee.
 // Une commande passee a PRETE quitte cette liste.
