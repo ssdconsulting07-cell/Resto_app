@@ -1,0 +1,4 @@
+node_modules/
+dist/
+.env
+app-manager/vite.config.js.timestamp-*.mjs

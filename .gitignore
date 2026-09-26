@@ -1,0 +1,19 @@
+# Backend
+backend/target/
+backend/.mvn/
+backend/*.log
+
+# Frontends
+app-client/node_modules/
+app-client/dist/
+app-manager/node_modules/
+app-manager/dist/
+
+# Env / IDE
+.env
+.env.*
+*.iml
+.idea/
+.vscode/
+.DS_Store
+**/vite.config.js.timestamp-*.mjs

@@ -1,0 +1,23 @@
+name: Backend CI
+on:
+  push:
+    branches: [main, preprod, staging, develop]
+    paths: ["backend/**"]
+  pull_request:
+    branches: [main, preprod, staging, develop]
+    paths: ["backend/**"]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: maven
+      - name: Build et tests
+        run: mvn -B verify
