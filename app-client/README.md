@@ -17,9 +17,15 @@ L'app tourne sur `http://localhost:5173` (port par défaut Vite). Elle attend le
 
 Autres scripts : `npm run build` (build de prod), `npm run preview` (prévisualiser le build).
 
-## Où travailler
+## Où travailler — organisation par fonctionnalité
 
-Tout est dans `src/`. Le squelette React + Vite est en place avec les pages placeholder prévues dans la spec (Accueil/Menu, Détail produit, Panier, Livraison invité, Suivi, Profil, Favoris, Historique) — à remplir.
+Le code est organisé par fonctionnalité dans `src/features/`, pas par type de fichier :
+
+- `features/produits/` — Accueil (menu), Détail produit
+- `features/commandes/` — Panier, Checkout (invité), Suivi de commande
+- `features/profil/` — Profil, Favoris, Historique
+
+Chaque écran est encore un placeholder à remplir (voir la spec équipe pour le détail par écran).
 
 - `src/api/client.js` — client HTTP déjà configuré : base `/api/v1`, gère le format d'erreur standard (`{ code, message, field }`) exposé sur l'erreur JS levée. À utiliser pour tous les appels API, pas de `fetch` brut.
 - `src/theme.js` — palette de marque : rouge `#A6192E`, noir `#141414`, blanc `#FFFFFF`, Poppins.

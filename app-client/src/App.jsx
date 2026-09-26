@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-import Accueil from './pages/Accueil.jsx'
-import ProduitDetail from './pages/ProduitDetail.jsx'
-import Panier from './pages/Panier.jsx'
-import Checkout from './pages/Checkout.jsx'
-import Suivi from './pages/Suivi.jsx'
-import Profil from './pages/Profil.jsx'
-import Favoris from './pages/Favoris.jsx'
-import Historique from './pages/Historique.jsx'
+import Accueil from './features/produits/Accueil.jsx'
+import ProduitDetail from './features/produits/ProduitDetail.jsx'
+import Panier from './features/commandes/Panier.jsx'
+import Checkout from './features/commandes/Checkout.jsx'
+import Suivi from './features/commandes/Suivi.jsx'
+import Profil from './features/profil/Profil.jsx'
+import Favoris from './features/profil/Favoris.jsx'
+import Historique from './features/profil/Historique.jsx'
 
 // Parcours (voir maquette v4, sans compte obligatoire) :
 // Accueil -> ProduitDetail -> Panier -> Checkout (invite) -> Suivi
