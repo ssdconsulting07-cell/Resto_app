@@ -4,6 +4,16 @@ Monorepo du projet **SenYummies**, developpe pour le restaurant Chez Ketchup :
 un backend commun (API) et deux frontends web (App Client et SenYummies
 Manager) qui consomment cette meme API.
 
+## Demarrage express par equipe
+
+Vous venez de cloner tout le monorepo mais vous ne travaillez que dans un seul dossier ? Chaque dossier d'equipe a son propre README avec les commandes exactes pour demarrer :
+
+- Equipe Backend -> `backend/README.md`
+- Equipe App Client -> `app-client/README.md`
+- Equipe Back-office -> `app-manager/README.md`
+
+Ce README racine reste la reference pour les conventions partagees entre les 3 equipes (section plus bas).
+
 ## Structure
 
 ```
